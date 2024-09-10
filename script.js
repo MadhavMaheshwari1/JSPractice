@@ -27,18 +27,70 @@
 
 // Q2: Based on implicit and explicit binding
 
-var obj = {
-    name: "Madhav",
-    greet: function () {
-        console.log("Good morning!", this.name);
-    }
-}
-var obj2 = {
-    name: "Vasu"
-}
+// var obj = {
+//     name: "Madhav",
+//     greet: function () {
+//         console.log("Good morning!", this.name);
+//     }
+// }
+// var obj2 = {
+//     name: "Vasu"
+// }
 
-obj.greet.call(obj2);
+// obj.greet.call(obj2);
 
 // Answer: .call(thisContext, arg1,arg2,...) provides this context to the function in this case provides name:"Vasu" to greet.
 // But if the greet function would have been an arrow function then this would refer to the enclosing scope which is the window object
 // because of which in that case we wouldn't be seeing anything logged.
+
+// Q3: Creating a cached/memoized function.
+
+function memoizedFunction(fn) {
+    const result = new Map();
+
+    return function (...params) {
+        const key = JSON.stringify(params); // Use JSON.stringify to create a unique key for the parameters
+        if (result.has(key)) {
+            return result.get(key);
+        } else {
+            const value = fn(...params);
+            result.set(key, value);
+            return value;
+        }
+    }
+}
+
+function clumsySquare(...params) {
+    for (let i = 0; i < 1000000000; i++) { }
+
+    return params.reduce((acc, curr) => {
+        return acc * curr;
+    }, 1);
+}
+
+const myFunc = memoizedFunction(clumsySquare);
+
+// console.log("Testing clumsySquare:");
+// console.time("clumsySquare");
+// console.log(clumsySquare(103334, 204343)); // Call the normal function
+// console.timeEnd("clumsySquare");
+
+// console.log("clumsySquare Second Call");
+// console.time("clumsySquare");
+// console.log(clumsySquare(103334, 204343)); // Call the normal function
+// console.timeEnd("clumsySquare");
+
+console.log("Testing memoized function:");
+console.time("memoizedFunction First Call");
+console.log(myFunc(103334, 204343, 400)); // Call the memoized function
+console.timeEnd("memoizedFunction First Call");
+
+console.time("memoizedFunction Second Call");
+console.log(myFunc(103334, 204343, 400)); // Call the memoized function again
+console.timeEnd("memoizedFunction Second Call");
+
+
+
+
+
+
