@@ -128,7 +128,20 @@
 // Create two Promises: one that resolves with the number 10 after 1 second and another that resolves with the number 20 after 2 seconds.
 // Use `Promise.all` to wait for both Promises to resolve and then log their sum to the console.
 
+// const promise1 = new Promise((resolve) => {
+//     setTimeout(() => {
+//         resolve(10);
+//     }, 1000);
+// });
 
+// const promise2 = new Promise((resolve) => {
+//     setTimeout(() => {
+//         resolve(20);
+//     }, 2000);
+// });
+
+// console.log(promise1);
+// Promise.all([promise1, promise2]).then((res) => console.log(res[0] + res[1]));
 
 
 // 4. Promise.race
