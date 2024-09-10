@@ -143,10 +143,17 @@
 // console.log(promise1);
 // Promise.all([promise1, promise2]).then((res) => console.log(res[0] + res[1]));
 
-
 // 4. Promise.race
 // Write a function `fastestOperation` that takes two Promises: one that resolves after 3 seconds with the string "Operation A" and
 // another that resolves after 1 second with the string "Operation B". Use `Promise.race` to return the result of the faster operation.
+
+// const promiseA = new Promise(resolve => setTimeout(() => resolve('Operation A'), 3000));
+// const promiseB = new Promise(resolve => setTimeout(() => resolve('Operation B'), 1000));
+
+// Promise.race([promiseA, promiseB])
+//   .then(result => {
+//     console.log(result); // Output: "Operation B"
+//   });
 
 // 5. Promise Handling with Async/Await
 // Convert the following Promise-based code to use `async`/`await` syntax:
@@ -163,31 +170,17 @@
 //   console.error(error);
 // });
 
-// 6. Error Handling in Promises
-// Write a function `fetchUser` that simulates fetching user data from an API. It should return a Promise that resolves with a user object `{ name: 'John' }`
-// if a condition is true and rejects with an error message "User not found" if the condition is false. Use `.catch()` to handle and log the error if the Promise is rejected.
+function fetchData() {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve('Data received'), 1000);
+    });
+}
 
-// 7. Chaining Multiple Promises
-// Create a function `processData` that simulates data processing. It should return a Promise that resolves with a number after a random delay between 1 and 3 seconds.
-// Chain multiple calls to `processData` and calculate the average of the results after all Promises have resolved.
-
-// 8. Promise with Multiple Arguments
-// Write a function `combineStrings` that takes two strings and returns a Promise. The Promise should resolve with the combined string after a 2-second delay.
-// Demonstrate how to use this function with `async`/`await` to concatenate two strings and log the result.
-
-// 9. Promise.allSettled
-// Write a function `fetchAllData` that takes an array of Promises, including both resolving and rejecting Promises.
-// Use `Promise.allSettled` to handle all Promises and log the results, showing which Promises fulfilled and which ones rejected.
-
-// 10. Custom Promise Implementation
-// Implement a basic version of a Promise class from scratch, handling `resolve`, `reject`, and `then` methods.
-// Your implementation should be able to chain `then` calls and handle errors properly.
-
-
-
-
-
-
-
-
-
+(async () => {
+    try {
+        const data = await fetchData();
+        console.log(data);
+    } catch (error) {
+        console.error(error);
+    }
+})();
