@@ -40,3 +40,5 @@ var obj2 = {
 obj.greet.call(obj2);
 
 // Answer: .call(thisContext, arg1,arg2,...) provides this context to the function in this case provides name:"Vasu" to greet.
+// But if the greet function would have been an arrow function then this would refer to the enclosing scope which is the window object
+// because of which in that case we wouldn't be seeing anything logged.
