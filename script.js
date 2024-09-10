@@ -170,17 +170,17 @@
 //   console.error(error);
 // });
 
-function fetchData() {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve('Data received'), 1000);
-    });
-}
+// function fetchData() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => resolve('Data received'), 1000);
+//     });
+// }
 
-(async () => {
-    try {
-        const data = await fetchData();
-        console.log(data);
-    } catch (error) {
-        console.error(error);
-    }
-})();
+// (async () => {
+//     try {
+//         const data = await fetchData();
+//         console.log(data);
+//     } catch (error) {
+//         console.error(error);
+//     }
+// })();
