@@ -114,9 +114,22 @@
 // Given a Promise-based function `fetchData` that resolves with a JSON object `{ data: 42 }`,
 // write a chain of `.then()` methods to extract the `data` property from the resolved value and log it to the console.
 
+// function fetchData() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve({ "data": 42 });
+//             reject('Error');
+//         }, 2000);
+//     })
+// }
+// fetchData().then((res) => console.log(res.data)).catch((error) => console.log(error));
+
 // 3. Promise.all
 // Create two Promises: one that resolves with the number 10 after 1 second and another that resolves with the number 20 after 2 seconds.
 // Use `Promise.all` to wait for both Promises to resolve and then log their sum to the console.
+
+
+
 
 // 4. Promise.race
 // Write a function `fastestOperation` that takes two Promises: one that resolves after 3 seconds with the string "Operation A" and
