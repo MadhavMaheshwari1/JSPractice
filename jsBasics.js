@@ -170,6 +170,18 @@
 
 // Property names matter for objects: In object destructuring, the names of the variables must match the property names in the object.
 
+const obj = {
+    username: "Madhav",
+    func: () => {
+        console.log(this.username);  // This will log undefined because 'this' in arrow functions is bound to the surrounding scope, not the object.
+    }
+};
+
+obj.func();  // Logs undefined
+// is will still log undefined in strict mode because 'this' in arrow functions does not refer to global object.
+
+// Arrow functions don't get their own this context. They inherit this from the lexical scope. If you want to refer to obj.username, you'll need a regular function like this:
+
 
 
 
