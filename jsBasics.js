@@ -94,17 +94,58 @@
 
 // Through Reduce -->
 
-const flatten = (arr, depth = 1) =>
-    arr.reduce((acc, val) =>
-        Array.isArray(val) && depth > 1
-            ? acc.concat(flatten(val, depth - 1))
-            : acc.concat(val), []
-    );
+// const flatten = (arr, depth = 1) =>
+//     arr.reduce((acc, val) =>
+//         Array.isArray(val) && depth > 1
+//             ? acc.concat(flatten(val, depth - 1))
+//             : acc.concat(val), []
+//     );
 
-const arr = [1, [2, [3, [4, 5]]]];
-console.log(flatten(arr, 1)); // [1, 2, [3, [4, 5]]]
-console.log(flatten(arr, 2)); // [1, 2, 3, [4, 5]]
-console.log(flatten(arr, Infinity)); // [1, 2, 3, 4, 5]
+// const arr = [1, [2, [3, [4, 5]]]];
+// console.log(flatten(arr, 1)); // [1, 2, [3, [4, 5]]]
+// console.log(flatten(arr, 2)); // [1, 2, 3, [4, 5]]
+// console.log(flatten(arr, Infinity)); // [1, 2, 3, 4, 5]
+
+// const id = Symbol('Id');
+
+// const employee = {
+//     [id]: 1,
+//     name: "Madhav Maheshwari", 
+//     SAP: 500092026
+// }
+
+// employee.name = "Madhav Maheshwari2" 
+// employee["name"] = "Nandini Maheshwari" 
+// Object.freeze(employee);
+// employee.name = "Madhav Maheshwari3" // These changes will not be propogated.
+// console.log(employee);
+
+// Singleton Object
+
+const Singleton = (function () {
+    let instance;
+
+    function createInstance() {
+        return { name: "I am the instance" };
+    }
+
+    return {
+        getInstance: function () {
+            if (!instance) {
+                instance = createInstance();
+            }
+            return instance;
+        }
+    };
+})();
+
+const obj1 = Singleton.getInstance();
+const obj2 = Singleton.getInstance();
+
+console.log(obj1 === obj2); // true
+
+
+
 
 
 
