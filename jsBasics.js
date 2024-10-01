@@ -122,27 +122,34 @@
 
 // Singleton Object
 
-const Singleton = (function () {
-    let instance;
+// const Singleton = (function () {
+//     let instance;
 
-    function createInstance() {
-        return { name: "I am the instance" };
-    }
+//     function createInstance() {
+//         return { name: "I am the instance" };
+//     }
 
-    return {
-        getInstance: function () {
-            if (!instance) {
-                instance = createInstance();
-            }
-            return instance;
-        }
-    };
-})();
+//     return {
+//         getInstance: function () {
+//             if (!instance) {
+//                 instance = createInstance();
+//             }
+//             return instance;
+//         }
+//     };
+// })();
 
-const obj1 = Singleton.getInstance();
-const obj2 = Singleton.getInstance();
+// const obj1 = Singleton.getInstance();
+// const obj2 = Singleton.getInstance();
 
-console.log(obj1 === obj2); // true
+// console.log(obj1 === obj2); // true
+
+// const obj1 = { 1: 'a', 2: 'b' }
+// const obj2 = { 3: 'c', 4: 'd' }
+
+// const obj3 = Object.assign(obj1, obj2);
+// console.log(obj3 === obj1);
+
 
 
 
