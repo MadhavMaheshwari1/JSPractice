@@ -69,30 +69,44 @@
 
 // Custom Flat
 
-const customFlat = (initial, depth = Infinity) => {
-    let newDepth = depth;
-    let temp = initial; // Start with the initial array
+// const customFlat = (initial, depth = Infinity) => {
+//     let newDepth = depth;
+//     let temp = [];
 
-    while (newDepth > 0) {
-        // Flatten one level of the array
-        temp = [].concat(...temp); 
+//     while (newDepth) {
+//         // Flatten one level of the array
+//         temp = [].concat(...initial);
 
-        // Check if there are still nested arrays
-        if (!temp.some(Array.isArray)) {
-            // If there are no more nested arrays, break
-            break;
-        }
+//         // If no more nested arrays are found, stop
+//         initial = temp;
+//         if (!initial.some(Array.isArray)) break; // This prevents premature termination
 
-        newDepth--; // Decrease the depth counter
-    }
+//         // Update initial to the newly flattened array
+//         newDepth--;
+//     }
 
-    return temp; // Return the flattened array
-};
+//     return initial; // Return the fully flattened array
+// };
 
-// Test input
-const num = [[1, [2, [3, [4, 5, 7, [8, [9]]]]]], [2, [8, [9]]], [3], [4, [4, 5, 7, [8, [9]]]], [5]];
-console.log(customFlat(num, 3)); // Flattening to depth 3
-console.log(customFlat(num)); // Flattening to infinity
+// // Test input
+// const num = [[1, [2, [3, [4, 5, 7, [8, [9]]]]]], [2, [8, [9]]], [3], [4, [4, 5, 7, [8, [9]]]], [5]];
+// console.log(customFlat(num));
+
+// Through Reduce -->
+
+const flatten = (arr, depth = 1) =>
+    arr.reduce((acc, val) =>
+        Array.isArray(val) && depth > 1
+            ? acc.concat(flatten(val, depth - 1))
+            : acc.concat(val), []
+    );
+
+const arr = [1, [2, [3, [4, 5]]]];
+console.log(flatten(arr, 1)); // [1, 2, [3, [4, 5]]]
+console.log(flatten(arr, 2)); // [1, 2, 3, [4, 5]]
+console.log(flatten(arr, Infinity)); // [1, 2, 3, 4, 5]
+
+
 
 
 
