@@ -39,7 +39,7 @@
 // const max = 200
 // console.log(Math.floor(Math.random() * (max - min + 1) + min));
 
-const arr = [234, 23423, 234324, 23234, 245695]
+// const arr = { "a": 234, "b": 23423, "c": 234324, "d": 23234, "e": 245695 }
 // const newArr = arr.join('-')
 
 // console.log(arr);
@@ -50,6 +50,56 @@ const arr = [234, 23423, 234324, 23234, 245695]
 // console.log(newArr1);
 // console.log(arr);
 // console.log(newArr2);
+
+// let arr1 = [1, 2, 3];
+// let newLength = arr1.push(4, 5); // Adds 4 and 5 to the array
+// console.log(arr1); // [1, 2, 3, 4, 5] (Original array is modified)
+// console.log(newLength); // 5 (The new length of the array)
+
+// let arr2 = [1, 2, 3];
+// let newArr = arr2.concat(4, 5); // Concatenates 4 and 5 into a new array
+// console.log(arr2); // [1, 2, 3] (Original array remains unchanged)
+// console.log(newArr); // [1, 2, 3, 4, 5] (New array with concatenated values)
+
+// Objects are always compared by reference irrespective of == or === comparison.
+
+// const num1 = [1, 2, 3];
+// const num2 = [].concat([1, 2, 3]);
+// console.log(num1 == num2);
+
+// Custom Flat
+
+const customFlat = (initial, depth = Infinity) => {
+    let newDepth = depth;
+    let temp = initial; // Start with the initial array
+
+    while (newDepth > 0) {
+        // Flatten one level of the array
+        temp = [].concat(...temp); 
+
+        // Check if there are still nested arrays
+        if (!temp.some(Array.isArray)) {
+            // If there are no more nested arrays, break
+            break;
+        }
+
+        newDepth--; // Decrease the depth counter
+    }
+
+    return temp; // Return the flattened array
+};
+
+// Test input
+const num = [[1, [2, [3, [4, 5, 7, [8, [9]]]]]], [2, [8, [9]]], [3], [4, [4, 5, 7, [8, [9]]]], [5]];
+console.log(customFlat(num, 3)); // Flattening to depth 3
+console.log(customFlat(num)); // Flattening to infinity
+
+
+
+
+
+
+
 
 
 
