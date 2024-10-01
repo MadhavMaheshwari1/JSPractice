@@ -150,6 +150,26 @@
 // const obj3 = Object.assign(obj1, obj2);
 // console.log(obj3 === obj1);
 
+// Object.keys is iterable like an array.
+
+// const obj1 = {
+//     nameOfOwner: "Madhav Maheshwari"
+// }
+
+// const { nameOfOwner: Name } = obj1;
+// console.log(Name);
+
+// const Navbar = ({ company }) => {
+//     console.log(company);
+// }
+
+// Navbar({ company: "Madhav" });
+
+// Difference Between Object and Array Destructuring:
+// Order matters for arrays: In array destructuring, elements are assigned based on their position (first element, second element, etc.).
+
+// Property names matter for objects: In object destructuring, the names of the variables must match the property names in the object.
+
 
 
 
