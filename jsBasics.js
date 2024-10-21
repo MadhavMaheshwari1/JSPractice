@@ -227,7 +227,7 @@
 // context gets deleted->myVar = 10;->logs value 10;
 
 // Nullish Coalescing Operator -> It does a safety check for null, for eg: If you don't get any valid response then you are assigned
-// null otherwise the value.
+// null or undefined otherwise the value.
 
 // It handle cases where the returned value can be other falsy values like 0 or '' or false.
 
@@ -252,3 +252,37 @@
 
 // // Without optional chaining, it would throw an error if address is undefined
 // console.log(user.profile?.bio); // Output: undefined
+
+// const map = new Map([
+//   [1, "one"],
+//   [2, "two"],
+//   [3, "three"],
+// ]);
+
+// // Iterating over map entries
+// for (const [key, value] of map) {
+//   console.log(key, value); // logs key-value pairs
+// }
+
+// foreach can't return anything whereas map,filter and reduce return a new deep copy of the original array.
+
+// DOM Manipulation:
+
+// const button = document.getElementById("myButton");
+// button.innerText-> it shows the text that is actually present on the button.
+// button.textContent-> it shows the text that is present on the button+text that is not visible.
+// button.innerHTML-> it shows the text that is present on the button+text that is not visible + HTML tags.
+
+// HTML Collection and NodeList are different types of collections, not arrays.
+
+// Through createElement method we can create new HTML elements only in memory but we can't see them in the browser, because
+// of that we will have to appendChild them to the DOM.
+
+// Prefer appendChild over innerHTML to avoid XSS attacks.
+// The problem is if innerHTML is used, any HTML code that is inserted can be executed leaving the site vulnerable.
+// Whereras appendChild only creates a new node, it doesn't execute the HTML code embedded in it.
+
+// Event Propogation -> Event bubbles up the DOM tree from the target element to the parent element.
+// There are two types of event bubbling: Capturing and bubling.
+// By default, event bubbles up from the target element to the parent element, but we can prevent it using stopPropagation() method.
+// or we can set capturing true, in which case event bubbles down from the parent element to the target element.
