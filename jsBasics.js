@@ -39,8 +39,8 @@
 // const max = 200
 // console.log(Math.floor(Math.random() * (max - min + 1) + min));
 
-// const arr = { "a": 234, "b": 23423, "c": 234324, "d": 23234, "e": 245695 }
-// const newArr = arr.join('-')
+// const arr = { a: 234, b: 23423, c: 234324, d: 23234, e: 245695 };
+// const newArr = [1, 2, 3].join(" ");
 
 // console.log(arr);
 // console.log(newArr);
@@ -110,12 +110,12 @@
 
 // const employee = {
 //     [id]: 1,
-//     name: "Madhav Maheshwari", 
+//     name: "Madhav Maheshwari",
 //     SAP: 500092026
 // }
 
-// employee.name = "Madhav Maheshwari2" 
-// employee["name"] = "Nandini Maheshwari" 
+// employee.name = "Madhav Maheshwari2"
+// employee["name"] = "Nandini Maheshwari"
 // Object.freeze(employee);
 // employee.name = "Madhav Maheshwari3" // These changes will not be propogated.
 // console.log(employee);
@@ -144,11 +144,15 @@
 
 // console.log(obj1 === obj2); // true
 
+// Shallow Copying takes place
+
 // const obj1 = { 1: 'a', 2: 'b' }
 // const obj2 = { 3: 'c', 4: 'd' }
 
 // const obj3 = Object.assign(obj1, obj2);
-// console.log(obj3 === obj1);
+// console.log(obj3);
+
+// For deep Copying we can use structuredClone method.
 
 // Object.keys is iterable like an array.
 
@@ -156,11 +160,15 @@
 //     nameOfOwner: "Madhav Maheshwari"
 // }
 
+// const newArr = [1, 2, 3, 4, 5];
+// const { 0: elem } = newArr;
+// console.log(elem);
+
 // const { nameOfOwner: Name } = obj1;
 // console.log(Name);
 
-// const Navbar = ({ company }) => {
-//     console.log(company);
+// const Navbar = ({ company:Company }) => {
+//     console.log(Company);
 // }
 
 // Navbar({ company: "Madhav" });
@@ -170,36 +178,77 @@
 
 // Property names matter for objects: In object destructuring, the names of the variables must match the property names in the object.
 
-const obj = {
-    username: "Madhav",
-    func: () => {
-        console.log(this.username);  // This will log undefined because 'this' in arrow functions is bound to the surrounding scope, not the object.
-    }
-};
+// const obj = {
+//   username: "Madhav",
+//   func: function () {
+//     const newFunc = () => {
+//       console.log(`${username}`);
+//     };
+//     newFunc();
+//   },
+// };
 
-obj.func();  // Logs undefined
-// is will still log undefined in strict mode because 'this' in arrow functions does not refer to global object.
+// obj.func();
+// Arrow functions don't get their own this context. They inherit this from the lexical scope. If you want to refer to obj.username, you'll need a regular function.
 
-// Arrow functions don't get their own this context. They inherit this from the lexical scope. If you want to refer to obj.username, you'll need a regular function like this:
+// const func = () => {
+//   console.log(this);
+// };
+// func();
 
+// IIFE ->
+// 1. Helps us making a function which runs on program initialization
+// 2. If we want that the variables inside no longer exist,or in other words doesn't pollute the global context.
 
+// (function (name) {
+//   function btoa() {
+//     return "abc";
+//   }
+//   console.log(btoa());
+// })("Madhav");
 
+// Initially Global Execution context is created and is referred to by this keyword.
+// First Phase for every execution context: Memory Creation Phase.
+// Second Phase for every execution context: Execution Phase.
 
+// console.log(myVar); // Logs: undefined
+// console.log(myFunc()); // Logs: 'Hello from myFunc!'
 
+// var myVar = 10;
 
+// function myFunc() {
+//   return 'Hello from myFunc!';
+// }
 
+// console.log(myVar); // Logs: 10
 
+// For the above code first phase is-> myVar = undefined; myfunct = definition-> execution phase->
+// logs undefined, Execution context for function is created in the same way and when function ends function execution
+// context gets deleted->myVar = 10;->logs value 10;
 
+// Nullish Coalescing Operator -> It does a safety check for null, for eg: If you don't get any valid response then you are assigned
+// null otherwise the value.
 
+// It handle cases where the returned value can be other falsy values like 0 or '' or false.
 
+// let var1 = null ?? undefined;
+// console.log(var1);
+// let var2 = null ?? 0;
+// console.log(var2);
 
+// Optional Chaining Operator -> Helps you in safe access of the properties of an object or array, if the property is not there
+// it simply returns undefined instead of throwing an error.
 
+// const user = {
+//   name: "Madhav",
+//   address: {
+//     street: "123 Main St",
+//   },
+// };
 
+// // Safe access using optional chaining
+// console.log(user.address?.street); // Output: '123 Main St'
+// console.log(user.address?.city); // Output: undefined
 
-
-
-
-
-
-
-
+// // Without optional chaining, it would throw an error if address is undefined
+// console.log(user.profile?.bio); // Output: undefined
