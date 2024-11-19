@@ -352,29 +352,163 @@
 // Encapsulation - Protected access of data - You can use the data but can't modify it according to your will...
 // Let's say you wanted to encrypt it...
 
-function Counter() {
-  let count = 0; // Private variable, accessible only inside the closure
+// function Counter() {
+//   let count = 0; // Private variable, accessible only inside the closure
 
-  return {
-    increment: function () {
-      count++;
-      console.log(`Count: ${count}`);
-    },
-    decrement: function () {
-      count--;
-      console.log(`Count: ${count}`);
-    },
-    getCount: function () {
-      return count; // Provides controlled access to the private variable
-    },
-  };
-}
+//   return {
+//     increment: function () {
+//       count++;
+//       console.log(`Count: ${count}`);
+//     },
+//     decrement: function () {
+//       count--;
+//       console.log(`Count: ${count}`);
+//     },
+//     getCount: function () {
+//       return count; // Provides controlled access to the private variable
+//     },
+//   };
+// }
 
-const counter = Counter();
-counter.increment(); // Count: 1
-counter.increment(); // Count: 2
-counter.decrement(); // Count: 1
-console.log(counter.getCount()); // 1
+// const counter = Counter();
+// counter.increment(); // Count: 1
+// counter.increment(); // Count: 2
+// counter.decrement(); // Count: 1
+// console.log(counter.getCount()); // 1
 // console.log(counter.count); // Undefined: `count` is not directly accessible
 
 // Abstraction hides the complex implementation details of an object and exposes only the essential features to the user.
+
+// class Car {
+//   startEngine() {
+//     console.log("Engine started...");
+//   }
+
+//   drive() {
+//     console.log("Driving...");
+//     this.stop();
+//   }
+
+//   // Abstracted implementation
+//   stop() {
+//     console.log("Car stopped.");
+//   }
+// }
+
+// const car = new Car();
+// car.startEngine(); // Exposes functionality
+// car.drive(); // Hides underlying complexities about stop...
+
+// Inheritance allows a class (child) to acquire properties and methods from another class (parent), promoting code reuse.
+
+// Parent Class
+// class Animal {
+//     constructor(name, species) {
+//       this.name = name;
+//       this.species = species;
+//     }
+
+//     eat() {
+//       console.log(`${this.name} is eating.`);
+//     }
+
+//     sleep() {
+//       console.log(`${this.name} is sleeping.`);
+//     }
+//   }
+
+//   // Child Class 1
+//   class Dog extends Animal {
+//     constructor(name, breed) {
+//       super(name, "Dog");
+//       this.breed = breed;
+//     }
+
+//     bark() {
+//       console.log(`${this.name}, the ${this.breed}, is barking.`);
+//     }
+//   }
+
+//   // Child Class 2
+//   class Cat extends Animal {
+//     constructor(name, color) {
+//       super(name, "Cat");
+//       this.color = color;
+//     }
+
+//     meow() {
+//       console.log(`${this.name}, the ${this.color} cat, is meowing.`);
+//     }
+//   }
+
+//   // Usage
+//   const tommy = new Dog("Tommy", "Golden Retriever");
+//   tommy.eat(); // Tommy is eating.
+//   tommy.bark(); // Tommy, the Golden Retriever, is barking.
+
+//   const kitty = new Cat("Kitty", "white");
+//   kitty.sleep(); // Kitty is sleeping.
+//   kitty.meow(); // Kitty, the white cat, is meowing.
+
+// Polymorphism means "many forms" — a method can behave differently depending on the object calling it.
+
+// In JavaScript, polymorphism is achieved primarily through Method Overriding (Runtime Polymorphism) and method overloading (simulated, not natively supported).
+
+// Method Overriding (Runtime Polymorphism)
+
+// A child class can redefine a method of its parent class.
+// When the method is called on an object, the version of the method specific to the object's class is executed.
+
+// Dynamic Method Invocation
+// JavaScript decides which method to invoke based on the type of the object at runtime.
+
+// Parent Class
+// class Animal {
+//     speak() {
+//       console.log("The animal makes a sound.");
+//     }
+//   }
+
+//   // Child Class 1
+//   class Dog extends Animal {
+//     speak() {
+//       console.log("The dog barks.");
+//     }
+//   }
+
+//   // Child Class 2
+//   class Cat extends Animal {
+//     speak() {
+//       console.log("The cat meows.");
+//     }
+//   }
+
+//   // Usage
+//   const animals = [new Animal(), new Dog(), new Cat()];
+
+//   animals.forEach((animal) => {
+//     animal.speak();
+//   });
+
+// Output:
+// The animal makes a sound.
+// The dog barks.
+// The cat meows.
+
+// Simplified Maintenance and flexibility - Polymorphism ensures that behavior changes are confined to specific classes, minimizing the need for changes in higher-level code.
+
+// Compile-Time Polymorphism (Method Overloading)
+
+// JavaScript does not natively support method overloading like some other languages (e.g., Java or C++).
+// However, method overloading can be simulated using default parameters or conditional logic.
+
+// function greet(name, age) {
+//   if (age) {
+//     console.log(`Hello ${name}, you are ${age} years old.`);
+//   } else {
+//     console.log(`Hello ${name}.`);
+//   }
+// }
+
+// greet("Madhav", 25); // Hello Madhav, you are 25 years old.
+// greet("Madhav");     // Hello Madhav.
