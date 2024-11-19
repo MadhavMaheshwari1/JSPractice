@@ -305,25 +305,25 @@
 //   })
 // );
 
-const promise4 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    let val = true;
-    if (!val) {
-      resolve({ name: "Madhav", description: "Boy" });
-    } else {
-      reject("Promise 4 rejected");
-    }
-  }, 2000);
-});
+// const promise4 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     let val = true;
+//     if (!val) {
+//       resolve({ name: "Madhav", description: "Boy" });
+//     } else {
+//       reject("Promise 4 rejected");
+//     }
+//   }, 2000);
+// });
 
-const ans = promise4
-  .then((user) => {
-    console.log(user.username);
-    return;
-  })
-  .catch((reject) => {
-    console.log(reject);
-  });
+// const ans = promise4
+//   .then((user) => {
+//     console.log(user.username);
+//     return;
+//   })
+//   .catch((reject) => {
+//     console.log(reject);
+//   });
 
 // A fetch promise is rejected only when there is a network error i.e., some permissions issue or some internet connections problem
 // and otherwise always resolved and we have to check for statuses manually.
@@ -336,3 +336,45 @@ const ans = promise4
 // 500 Internal Server Error - The server has encountered a situation it does not know how to handle.
 // 200 OK - The request succeeded.
 // 303 See Other - The server sent this response to direct the client to get the requested resource at another URI with a GET request.
+
+// const amazing = new Promise((resolveOuter) => {
+//   resolveOuter(
+//     new Promise((resolveInner) => {
+//       setTimeout(resolveInner, 1000);
+//     }).then(() => "Resolved")
+//   );
+// });
+
+// console.log(amazing);
+
+// OOPS
+
+// Encapsulation - Protected access of data - You can use the data but can't modify it according to your will...
+// Let's say you wanted to encrypt it...
+
+function Counter() {
+  let count = 0; // Private variable, accessible only inside the closure
+
+  return {
+    increment: function () {
+      count++;
+      console.log(`Count: ${count}`);
+    },
+    decrement: function () {
+      count--;
+      console.log(`Count: ${count}`);
+    },
+    getCount: function () {
+      return count; // Provides controlled access to the private variable
+    },
+  };
+}
+
+const counter = Counter();
+counter.increment(); // Count: 1
+counter.increment(); // Count: 2
+counter.decrement(); // Count: 1
+console.log(counter.getCount()); // 1
+// console.log(counter.count); // Undefined: `count` is not directly accessible
+
+// Abstraction hides the complex implementation details of an object and exposes only the essential features to the user.
