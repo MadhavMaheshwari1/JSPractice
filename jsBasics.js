@@ -283,6 +283,56 @@
 // Whereras appendChild only creates a new node, it doesn't execute the HTML code embedded in it.
 
 // Event Propogation -> Event bubbles up the DOM tree from the target element to the parent element.
-// There are two types of event bubbling: Capturing and bubling.
+// There are two types of event bubbling: Capturing and bubbling.
 // By default, event bubbles up from the target element to the parent element, but we can prevent it using stopPropagation() method.
 // or we can set capturing true, in which case event bubbles down from the parent element to the target element.
+
+// Promise is the eventual completion or failure of an asynchronous operation and also the value associated with the completion or
+// failure.
+
+// const promise1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     // resolve('Promise 1 resolved');
+//     resolve("resolved promise");
+//     console.log("Resolved promise");
+//   }, 2000);
+// });
+
+// console.log(
+//   promise1.then((resolve) => {
+//     // console.log("resolved");
+//     console.log(resolve);
+//   })
+// );
+
+const promise4 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    let val = true;
+    if (!val) {
+      resolve({ name: "Madhav", description: "Boy" });
+    } else {
+      reject("Promise 4 rejected");
+    }
+  }, 2000);
+});
+
+const ans = promise4
+  .then((user) => {
+    console.log(user.username);
+    return;
+  })
+  .catch((reject) => {
+    console.log(reject);
+  });
+
+// A fetch promise is rejected only when there is a network error i.e., some permissions issue or some internet connections problem
+// and otherwise always resolved and we have to check for statuses manually.
+// Or you can say it will go in catch when it is not even able to make any request.
+
+// Status Codes ->
+
+// 404 Not Found - The server cannot find the requested resource.
+// 403 Forbidden - The client does not have access rights to the content;
+// 500 Internal Server Error - The server has encountered a situation it does not know how to handle.
+// 200 OK - The request succeeded.
+// 303 See Other - The server sent this response to direct the client to get the requested resource at another URI with a GET request.
