@@ -552,3 +552,65 @@
 // console.log(madhav);
 
 // this is a reference to the current object in the execution context.
+// instanceof operator tests constructor prototype chain with object's prototype chain, if object appears in constructor chain, then true else false...
+
+// function Obj(username, loginCount) {
+//   this.username = username;
+//   this.loginCount = loginCount;
+//   this.greet = function () {
+//     console.log(`Hello ${username}`);
+//   };
+// }
+
+// const madhav1 = new Obj("Madhav", 5);
+// const madhav2 = new Obj("Madhav", 5);
+// console.log(madhav1.greet === madhav2.greet);// false as both have different this contexts...
+// console.log(Obj instanceof madhav1); // error as correct syntax is: (obj instanceof constructorFunction)...
+// All JavaScript numbers are 64-bit floating-point numbers...
+
+// const num = new Number(2);
+// console.log(num);
+
+// When you try to run a function on a primitive js wraps the primitive into corresponding object (for strings only) and then you are
+// able to run a function on the primitive...
+
+// To convert an array of objects into an array of array...
+
+// const num1 = [
+//   { name: "Madhav", value: "Helsdlo" },
+//   { name: "Madsdfhav", value: "Hesfllo" },
+//   { name: "Madhasdfvsdf", value: "Hellsdfo" },
+//   { name: "Madhsdfsdfav", value: "Helsdflo" },
+// ];
+
+// const num2 = num1.map((val, ind) => {
+//   const newArr = Object.keys(val).map((key) => val[key]);
+//   return newArr;
+// });
+
+// console.log(num2);
+
+// Object.values() provides an array of object's enumerable propertie's values...
+// Much easier than above...
+
+// map,reduce and filter makes a shallow copy(for reference data types only) of the array you are running on it...
+
+// const num1 = [
+//   { name: "Madhav", value: "Helsdlo" },
+//   { name: "Madsdfhav", value: "Hesfllo" },
+//   { name: "Madhasdfvsdf", value: "Hellsdfo" },
+//   { name: "Madhsdfsdfav", value: "Helsdflo" },
+// ];
+
+// const num2 = num1.map((val) => val);
+// console.log((num2[0].name = "Madhav1234"));
+// console.log(num1);
+
+// Functions in js are first class objects, meaning they can be assigned to a variable, called, can be returned, can be assigned some values...
+// function greet() {
+//   console.log("HELLO");
+// }
+// greet.help = "Madhav";
+// console.log(greet);
+
+// By default every reference data type inherit from Object.prototype unless specified through Object.create(null)...
