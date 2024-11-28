@@ -512,3 +512,43 @@
 
 // greet("Madhav", 25); // Hello Madhav, you are 25 years old.
 // greet("Madhav");     // Hello Madhav.
+
+// -> For more strict parsing of the code...
+// "use strict";
+
+// function sayHello() {
+//   console.log(this);
+// }
+// sayHello(); // `this` is the global object in non-strict mode or `undefined` in strict mode.
+
+// const person = { name: "Madhav", sayHello };
+// person.sayHello(); // `this` is `person`.
+
+// function sum(a, a, c) {
+//   // Error: Duplicate parameter name not allowed
+//   return a + a + c;
+// }-> not allowed in strict mode but normally allowed...
+// console.log(this);
+
+// How Context Changes:
+
+// Default context: In the global scope, this refers to the global object (window in browsers, global in Node.js).
+// Function calls: In strict mode, this is undefined for standalone functions. Without strict mode, it refers to the global object.
+// Method calls: this refers to the object owning the method.
+// Arrow functions: They don't have their own this and inherit it from their parent scope.
+
+// When you call any function with new...
+// A new object is created, this being {} as well.
+// Now you can bind different properties to this object.
+// and now this.__proto__ points to the user.prototype...
+// Every newly created object has its own this...
+
+// function user(username, loginCount) {
+//   this.username = username;
+//   this.loginCount = loginCount;
+// }
+
+// const madhav = new user("Madhav", 5); // new is necessary because it binds this to the newly created object...
+// console.log(madhav);
+
+// this is a reference to the current object in the execution context.
