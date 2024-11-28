@@ -614,3 +614,25 @@
 // console.log(greet);
 
 // By default every reference data type inherit from Object.prototype unless specified through Object.create(null)...
+// .prototype is available to only constructor functions and not to instances of them...
+// You can normally just add any function to instances without prototype usage...
+
+// Array.prototype.func = function (num) {
+//   return num * 10;
+// };
+
+// const num1 = [
+//   { name: "Madhav", value: "Helsdlo" },
+//   { name: "Madsdfhav", value: "Hesfllo" },
+//   { name: "Madhasdfvsdf", value: "Hellsdfo" },
+//   { name: "Madhsdfsdfav", value: "Helsdflo" },
+// ];
+
+// // console.log(num1.func(5)); // Outputs: 50
+// num1.func = function(){
+//     return 50;
+// }
+// console.log(num1.func());
+// const arr = Object.create(Array); // Array is a constructor function, so its prototype is pointing 
+// constructor but its actually normal object...
+// console.log(arr);
