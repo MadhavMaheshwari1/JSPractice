@@ -633,6 +633,14 @@
 //     return 50;
 // }
 // console.log(num1.func());
-// const arr = Object.create(Array); // Array is a constructor function, so its prototype is pointing 
+// const arr = Object.create(Array); // Array is a constructor function, so its prototype is pointing
 // constructor but its actually normal object...
 // console.log(arr);
+
+// obj got the prototype chain of Array constructor function and therefore of Array.prototype also...
+// const obj = Object.create(Array);
+// console.log(obj.length);
+// console.log(obj.from("String"));
+Array.prototype.from();
+
+// Everything inherits from Object.prototype but we are not able to inherit static method of Object constructor...
