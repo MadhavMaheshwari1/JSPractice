@@ -692,14 +692,31 @@
 // const descriptor = Object.getOwnPropertyDescriptor(global, "setTimeout");
 // console.log(descriptor);
 
-Object.getOwnPropertyDescriptor("foo", 0);
-// TypeError: "foo" is not an object  // ES5 code
+// Object.getOwnPropertyDescriptor("foo", 0);
+// // TypeError: "foo" is not an object  // ES5 code
 
-const descriptor = Object.getOwnPropertyDescriptor("sdfsdffoo", 0);
-console.log(descriptor);
+// const descriptor = Object.getOwnPropertyDescriptor("sdfsdffoo", 0);
+// console.log(descriptor);
 // Object returned by ES2015 code: {
 //   configurable: false,
 //   enumerable: true,
 //   value: "s",
 //   writable: false
 // }
+
+// const obj = {};
+// Object.defineProperty(obj, "hiddenProp", {
+//   value: 100,
+//   enumerable: false,
+// });
+
+// console.log(Object.keys(obj)); // [] (does not include "hiddenProp")
+
+// for (let key in obj) {
+//   console.log(key); // (no output, "hiddenProp" is not enumerated)
+// }
+
+// console.log(obj.hiddenProp); // 100 (still accessible directly)
+
+// Closure represents functions remembering its environment...
+
