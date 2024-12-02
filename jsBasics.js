@@ -682,3 +682,24 @@
 // Once a function is bound by .bind(), you can't again change the context...
 // The function returned by bind will always point to the new location when called further but not the same with call,
 // for call you will have to specify again and again when needed...
+
+// Object.getOwnPropertyDescriptor(Object, property) returns configuration settings of the specified property...
+// A property in js consists of the property in string format or symbol and a property descriptor...
+
+// A property descriptor has following properties:
+// set, get, value,writable, enumerable->you can iterate or not and configurable-> Whether you can change the type or delete the property...
+
+// const descriptor = Object.getOwnPropertyDescriptor(global, "setTimeout");
+// console.log(descriptor);
+
+Object.getOwnPropertyDescriptor("foo", 0);
+// TypeError: "foo" is not an object  // ES5 code
+
+const descriptor = Object.getOwnPropertyDescriptor("sdfsdffoo", 0);
+console.log(descriptor);
+// Object returned by ES2015 code: {
+//   configurable: false,
+//   enumerable: true,
+//   value: "s",
+//   writable: false
+// }
