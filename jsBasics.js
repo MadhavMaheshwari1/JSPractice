@@ -641,6 +641,44 @@
 // const obj = Object.create(Array);
 // console.log(obj.length);
 // console.log(obj.from("String"));
-Array.prototype.from();
 
 // Everything inherits from Object.prototype but we are not able to inherit static method of Object constructor...
+// Array.prototype.from();
+
+// Static methods are required when you don't want to instantiate new instances and without your work is getting done...
+// or you want to create methods that are same for all instances of an object...
+// can be made with the help of keyword static...
+
+// We can also make prototype chain of different objects by using __proto__: objectYouWantToAttach, but older syntax...
+// New Syntax - Object.setPrototypeOf(objYouWantToHavePrototypeInOfOtherObj,protoOfOtherObj);
+
+// Scope determines accessibility whereas Context refers to the current environment(created by functions,block scope or objects ) in which the code is running...
+
+// this refers to the current context, for functions this also include outer scope because functions during time of declaration captures outer scope,
+// whereeas objects don't do this, therefore this in this case only refer to the object...
+
+// Through .call() for any function we can explicitly bind the current function's this to another this...
+// call() vs apply(), call takes space seperated arguments whereas apply() takes array like arguments...
+
+// const obj1 = {
+//   name: "Madhav",
+//   greet: function () {
+//     console.log(`Hello ${this.name}`);
+//   },
+// };
+
+// const obj2 = {
+//   name: "Khushi",
+//   greet: function () {
+//     console.log(`Hello ${this.name}`);
+//   },
+// };
+
+// obj1.greet.call(obj2);
+
+// console.log(obj1.greet());
+// console.log(func());
+
+// Once a function is bound by .bind(), you can't again change the context...
+// The function returned by bind will always point to the new location when called further but not the same with call,
+// for call you will have to specify again and again when needed...
