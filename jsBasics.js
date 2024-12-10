@@ -720,3 +720,6 @@
 
 // Closure represents functions remembering its environment...
 
+// Curried function is a function which accepts single argument and returns a chain of function which
+// receive single parameter and also return such functions whereas in partial application
+// we have some prefilled arguments which can be later on fulfilled...
