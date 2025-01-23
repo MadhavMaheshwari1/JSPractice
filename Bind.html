@@ -8,34 +8,9 @@
 </head>
 
 <body>
-    <button id="counter">Count:0</button>
-    <script>
-        class React {
-            constructor() {
-                this.state = {
-                    count: 0
-                };
-
-                // document.getElementById('counter').addEventListener('click', () => {
-                //     this.handleClick.call(this);
-                // });
-
-                //  or with bind
-
-                document.getElementById('counter').addEventListener('click', this.handleClick.bind(this));
-            }
-
-            handleClick() {
-                console.log(`count is ${this.state.count}`);
-                this.state.count++;
-                document.querySelector('#counter').innerText = `Count:${this.state.count}`;
-            }
-        }
-
-        reactObj = new React();
-
-    </script>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
 </body>
 
-
+    <script src="/jsBasics.js"></script>
 </html>
